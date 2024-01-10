@@ -1,0 +1,28 @@
+name: SPAdes 1k test
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    
+    strategy:
+      matrix: 
+        os: [ ubuntu-latest, macos-latest ]
+    
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+
+    - name: compile
+      run: assembler/spades_compile.sh -j3
+
+    - name: multi-cell mode check
+      run: bin/spades.py --test
+    - name: single-cell mode check
+      run: bin/spades.py --sc --test
+    - name: plasmid mode check
+      run: bin/plasmidspades.py --test
+    - name: metagenomic mode check
+      run: bin/metaspades.py --test

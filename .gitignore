@@ -1,0 +1,14 @@
+.settings
+.metadata/*
+.idea
+stats/*
+RemoteSystemsTempFiles/*
+~*
+*~
+*.exe
+*.exe.stackdump
+gmon.out
+CMakeFiles
+CMakeCache.txt
+cmake_install.cmake
+assembler/src/tools/quality/results*
